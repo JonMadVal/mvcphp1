@@ -181,10 +181,12 @@ class postController extends Controller
         $this->getLibrary('paginador');
         $paginador = new Paginador();
         $this->_view->setJs(array('prueba'));      
-        //$this->_view->assign('posts', $paginador->paginar($this->_post->getPrueba() , $pagina ));
+        
+        $ajaxModel = $this->loadModel('ajax');
+        $this->_view->assign('paises', $ajaxModel->getPaises());
+        
         $this->_view->assign('posts', $paginador->paginar($this->_post->getPrueba() ));
         $this->_view->assign('paginacion', $paginador->getView('paginacion_ajax' ));
-        //$this->_view->assign('paginacion', $paginador->getView('prueba', 'post/prueba'));
         $this->_view->assign('titulo', 'Post');        
         $this->_view->renderizar('prueba', 'prueba');
     }
@@ -193,10 +195,30 @@ class postController extends Controller
    {
        // Creando paginacion con el metodo Ajax
        $pagina = $this->getInt('pagina');
+       $nombre = $this->getSql('nombre');
+       $pais = $this->getInt('pais');
+       $ciudad = $this->getInt('ciudad');
+       $registros  = $this->getInt('registros');
+       $condicion = "";
+       
+       if($nombre){
+           $condicion .= " AND `nombre` liKe '$nombre%' ";
+       }
+       
+       if($pais){
+           $condicion .= " AND `id_pais` = $pais ";
+       }
+       
+       if($ciudad){
+           $condicion .= " AND `id_ciudad` = $ciudad ";
+       }
+       
+       
+       
         $this->getLibrary('paginador');
         $paginador = new Paginador();
         $this->_view->setJs(array('prueba'));
-        $this->_view->assign('posts', $paginador->paginar($this->_post->getPrueba(), $pagina));
+        $this->_view->assign('posts', $paginador->paginar($this->_post->getPrueba($condicion), $pagina, $registros));
         $this->_view->assign('paginacion', $paginador->getView('paginacion_ajax'));
         $this->_view->renderizar('ajax/prueba', false, true);
    }  

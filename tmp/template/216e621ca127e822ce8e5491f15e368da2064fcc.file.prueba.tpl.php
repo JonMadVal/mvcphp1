@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2014-06-15 17:51:00
+<?php /* Smarty version Smarty-3.1.8, created on 2014-06-15 18:10:46
          compiled from "C:\wamp\www\mvcphp1\views\post\ajax\prueba.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28796539e2354ecda33-61077765%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '216e621ca127e822ce8e5491f15e368da2064fcc' => 
     array (
       0 => 'C:\\wamp\\www\\mvcphp1\\views\\post\\ajax\\prueba.tpl',
-      1 => 1352252740,
+      1 => 1402873842,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_539e235583eb97_29571760',
   'variables' => 
   array (
     'posts' => 0,
@@ -22,14 +24,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'paginacion' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_539e235583eb97_29571760',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_539e235583eb97_29571760')) {function content_539e235583eb97_29571760($_smarty_tpl) {?><?php if (isset($_smarty_tpl->tpl_vars['posts']->value)&&count($_smarty_tpl->tpl_vars['posts']->value)){?>
     <table class="table table-bordered table-condensed table-striped">
         <tr>
             <th>ID</th>
             <th>Nombre</th>
+            <th>Pais</th>
+            <th>Ciudad</th>
         </tr>
 
         <?php  $_smarty_tpl->tpl_vars['datos'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['datos']->_loop = false;
@@ -41,6 +43,10 @@ $_smarty_tpl->tpl_vars['datos']->_loop = true;
                 <td><?php echo $_smarty_tpl->tpl_vars['datos']->value['id'];?>
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['datos']->value['nombre'];?>
+</td>
+                <td><?php echo $_smarty_tpl->tpl_vars['datos']->value['pais'];?>
+</td>
+                <td><?php echo $_smarty_tpl->tpl_vars['datos']->value['ciudad'];?>
 </td>
             </tr>
         <?php } ?>
