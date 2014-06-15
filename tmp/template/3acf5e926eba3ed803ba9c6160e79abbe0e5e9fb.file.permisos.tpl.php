@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2014-04-20 20:35:23
+<?php /* Smarty version Smarty-3.1.8, created on 2014-06-15 09:36:24
          compiled from "C:\wamp\www\mvcphp1\views\acl\permisos.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:5882535475db250193-07337981%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3acf5e926eba3ed803ba9c6160e79abbe0e5e9fb' => 
     array (
       0 => 'C:\\wamp\\www\\mvcphp1\\views\\acl\\permisos.tpl',
-      1 => 1398042705,
+      1 => 1402842833,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_535475db453df8_21493481',
   'variables' => 
   array (
     'permisos' => 0,
@@ -22,13 +24,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '_layoutParams' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_535475db453df8_21493481',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_535475db453df8_21493481')) {function content_535475db453df8_21493481($_smarty_tpl) {?><h2>Administración de permisos</h2>
 
 <?php if (isset($_smarty_tpl->tpl_vars['permisos']->value)&&count($_smarty_tpl->tpl_vars['permisos']->value)){?>
-<table>
+<table class="table table-bordered table-condensed table-striped" style="width:500px;">
     <tr>
         <th>ID</th>
         <th>Permiso</th>
@@ -58,6 +58,6 @@ $_smarty_tpl->tpl_vars['rl']->_loop = true;
 <?php }?>
 
 <p><a href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
-acl/nuevo_permiso">Agregar Permiso</a></p>
+acl/nuevo_permiso" class="btn btn-primary"><i class="icon-plus-sign icon-white"> </i> Agregar Permiso</a></p>
 <p><a href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
 acl">Retornar</a></p>  <?php }} ?>

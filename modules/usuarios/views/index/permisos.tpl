@@ -5,7 +5,7 @@
 <form name="form1" method="post" action="">
     <input type="hidden" value="1" name="guardar">
 {if isset($permisos) && count($permisos)}
-    <table>
+    <table class="table table-bordered table-striped table-condensed" style="width: 500px;">
         <tr><td>Permiso</td>
             <td></td>
         </tr>
@@ -29,6 +29,6 @@
             
         {/foreach}
     </table>
-        <p><input type="submit" value="guardar" /></p>
+        <p><button type="submit" value="guardar" class="btn btn-primary"><i class="icon-ok icon-white"> </i> Guardar</button></p>
 {/if}
 </form>

@@ -1,6 +1,6 @@
 <h2>Usuarios</h2>
 {if isset($usuarios) && count($usuarios)}
-    <table>
+    <table class="table table-bordered table-striped table-condensed">
         <tr><td>ID</td>
             <td>Usuario</td>
             <td>Role</td>

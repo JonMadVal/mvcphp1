@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2014-04-20 20:35:07
+<?php /* Smarty version Smarty-3.1.8, created on 2014-06-15 09:34:42
          compiled from "C:\wamp\www\mvcphp1\views\acl\roles.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:5404535475cb645071-80073164%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c89a38872c6e69afa842fdc7b8cf5b85e13c8002' => 
     array (
       0 => 'C:\\wamp\\www\\mvcphp1\\views\\acl\\roles.tpl',
-      1 => 1398042618,
+      1 => 1402842879,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_535475cb880745_81673960',
   'variables' => 
   array (
     'roles' => 0,
@@ -22,13 +24,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '_layoutParams' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_535475cb880745_81673960',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_535475cb880745_81673960')) {function content_535475cb880745_81673960($_smarty_tpl) {?><h2>Administración de Roles</h2>
 
 <?php if (isset($_smarty_tpl->tpl_vars['roles']->value)&&count($_smarty_tpl->tpl_vars['roles']->value)){?>
-<table>
+<table class="table table-bordered table-condensed table-striped">
     <tr>
         <th>ID</th>
         <th>Role</th>
@@ -57,8 +57,8 @@ acl/permisos_role/<?php echo $_smarty_tpl->tpl_vars['rl']->value['id_role'];?>
     <?php } ?>
 </table>
 <?php }?>
-
-<p><a href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
-acl/nuevo_role">Agregar Role</a></p>
+ 
+<p><a class="btn btn-primary" href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
+acl/nuevo_role"><i class="icon-plus-sign icon-white"> </i> Agregar Role</a></p>
 <p><a href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
 acl">Retornar</a></p>    <?php }} ?>

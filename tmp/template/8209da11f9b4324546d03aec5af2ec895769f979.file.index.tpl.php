@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2014-04-20 20:35:31
+<?php /* Smarty version Smarty-3.1.8, created on 2014-06-14 22:06:26
          compiled from "C:\wamp\www\mvcphp1\views\post\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:26376535475e3ca6518-21635272%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8209da11f9b4324546d03aec5af2ec895769f979' => 
     array (
       0 => 'C:\\wamp\\www\\mvcphp1\\views\\post\\index.tpl',
-      1 => 1398042253,
+      1 => 1402801579,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_535475e4278015_72695280',
   'variables' => 
   array (
     '_acl' => 0,
@@ -24,19 +26,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'paginacion' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_535475e4278015_72695280',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_535475e4278015_72695280')) {function content_535475e4278015_72695280($_smarty_tpl) {?><h2>Ultimos Posts</h2> 
 <?php if ($_smarty_tpl->tpl_vars['_acl']->value->permiso('nuevo_post')){?>    
 <<?php ?>?php //if(Session::accesoView('especial')): ?<?php ?>>
 <p><a href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
-post/nuevo">Agregar Post</a></p>
+post/nuevo" class="btn btn-primary"><i class="icon-plus-sign icon-white"> </i> Agregar Post</a></p>
 <?php }?>
 
 <?php if (isset($_smarty_tpl->tpl_vars['posts']->value)&&count($_smarty_tpl->tpl_vars['posts']->value)){?>   
 <center>
-<table border='1'>
+<table  class="table table-bordered table-condensed table-striped">
     <tr>
         <td>ID</td>
         <td>Titulo</td>
@@ -55,17 +55,17 @@ foreach ($_from as $_smarty_tpl->tpl_vars['datos']->key => $_smarty_tpl->tpl_var
 $_smarty_tpl->tpl_vars['datos']->_loop = true;
 ?>
     <tr>
-        <td><?php echo $_smarty_tpl->tpl_vars['datos']->value['id'];?>
+        <td style="text-align: center;"><?php echo $_smarty_tpl->tpl_vars['datos']->value['id'];?>
 </td>
         <td><?php echo $_smarty_tpl->tpl_vars['datos']->value['titulo'];?>
 </td>
         <td><?php echo $_smarty_tpl->tpl_vars['datos']->value['cuerpo'];?>
 </td>
-        <td>
+        <td style="text-align: center;">
             <?php if (isset($_smarty_tpl->tpl_vars['datos']->value['imagen'])){?>
                 <a href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
 public/img/post/<?php echo $_smarty_tpl->tpl_vars['datos']->value['imagen'];?>
-">
+" target="__blank" >
                     <img src="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
 public/img/post/thumb/thumb_<?php echo $_smarty_tpl->tpl_vars['datos']->value['imagen'];?>
 " />
@@ -73,12 +73,12 @@ public/img/post/thumb/thumb_<?php echo $_smarty_tpl->tpl_vars['datos']->value['i
             <?php }?>
         </td>        
         <?php if ($_smarty_tpl->tpl_vars['_acl']->value->permiso('editar_post')){?>    
-        <td><a href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
+        <td style="text-align: center; vertical-align: middle;"><a href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
 post/editar/<?php echo $_smarty_tpl->tpl_vars['datos']->value['id'];?>
 ">Editar</a></td>
         <?php }?>
         <?php if ($_smarty_tpl->tpl_vars['_acl']->value->permiso('eliminar_post')){?>    
-        <td><a href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
+        <td style="text-align: center; vertical-align: middle;"><a href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
 post/eliminar/<?php echo $_smarty_tpl->tpl_vars['datos']->value['id'];?>
 " onclick="return confirm('confirmas?');" >Eliminar</a></td>
         <?php }?>

@@ -1,6 +1,24 @@
 <h2>Prueba</h2>
+
+<!-- div class="well well-small">
+    <form id="form1" class="form-inline">
+        Nombre: <input type="text" name="nombre" id="nombre">
+        <button type="button" id="btnEnviar" class="btn"><i class="icon-search"></i></button>
+        
+        <br><br>
+        
+        <select id="pais"><option value=""> - seleccione pais - </option></select>
+        <select id="ciudad"><option value=""> - seleccione ciudad - </option></select>
+    </form>
+</div -->
+
+<div id="lista_registros">
 {if isset($posts) && count($posts)} 
-<table>
+<table class="table table-bordered table-condensed table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+    </tr>
     {foreach item=datos from=$posts}
     <tr>
         <td>{$datos.id}</td>
@@ -12,5 +30,5 @@
 {else}
 <p><strong>No hay posts!</strong></p>
 {/if}
-{if (isset($paginacion)}{$paginacion}{/if}
- 
+{if isset($paginacion)}{$paginacion}{/if}
+</div>

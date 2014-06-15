@@ -8,6 +8,7 @@ class View extends Smarty
     private $_js;
     private $_acl;
     private $_rutas;
+    private $_jsPlugin;
     
     public function __construct(Request $peticion, ACL $_acl)
     {
@@ -16,6 +17,7 @@ class View extends Smarty
         $this->_js = array();
         $this->_acl = $_acl;
         $this->_rutas = array();
+        $this->_jsPlugin = array(); //inicializamos con un contructor
         
         $modulo = $this->_request->getModulo();
         $controlador = $this->_request->getControlador();
@@ -30,7 +32,7 @@ class View extends Smarty
         }
         
     }
-    public function renderizar($vista , $item = false)
+    public function renderizar($vista , $item = false,$noLayout = false)
     {
         /*Configuracion del Template de Smarty*/
         $this->template_dir = ROOT . 'views' . DS . 'layout'. DS . DEFAULT_LAYOUT . DS;
@@ -48,18 +50,7 @@ class View extends Smarty
                 'id'=> 'post',
                 'titulo'=> 'post',
                 'enlace'=> BASE_URL.'post',
-            ),
-/*
-            array(
-                'id'=> 'pdf/pdf1',
-                'titulo'=> 'Reporte',
-                'enlace'=> BASE_URL.'pdf/pdf1',
-            ),*/
-            array(
-                'id'=> 'pdf/pdf1/Guillermo/Rodriguez',
-                'titulo'=> 'PDF',
-                'enlace'=> BASE_URL.'pdf/pdf1/Guillermo/Rodriguez',
-            )
+            ) 
         );
         
         if(Session::get('autenticado')){
@@ -80,6 +71,50 @@ class View extends Smarty
                 'enlace' => BASE_URL . 'usuarios/registro'
                 );
         }        
+
+        $menuRight = array(
+            array(
+                'id' => 'usuarios',
+                'titulo' => 'Usuarios',
+                'enlace' => BASE_URL . 'usuarios',
+                'imagen' => 'icon-user'
+                ),
+            
+            array(
+                'id' => 'acl',
+                'titulo' => 'Listas de control de acceso',
+                'enlace' => BASE_URL . 'acl',
+                'imagen' => 'icon-list-alt'
+                ),
+            
+            array(
+                'id' => 'ajax',
+                'titulo' => 'Ejemplo uso de AJAX',
+                'enlace' => BASE_URL . 'ajax',
+                'imagen' => 'icon-refresh'
+                ),
+            
+            array(
+                'id' => 'prueba',
+                'titulo' => 'Prueba paginaci&oacute;n',
+                'enlace' => BASE_URL . 'post/prueba',
+                'imagen' => 'icon-random'
+                ),
+            
+            array(
+                'id' => 'pdf',
+                'titulo' => 'Documento PDF 1',
+                'enlace' => BASE_URL . 'pdf/pdf1/param1/param2',
+                'imagen' => 'icon-file'
+                ),
+            
+            array(
+                'id' => 'pdf',
+                'titulo' => 'Documento PDF 2',
+                'enlace' => BASE_URL . 'pdf/pdf2/Guillermo/Rodriguez',
+                'imagen' => 'icon-file'
+                )
+        );        
         
         $js = array();
         
@@ -92,14 +127,15 @@ class View extends Smarty
             'ruta_js'=>BASE_URL.'views/layout/'.DEFAULT_LAYOUT.'/js/',
             'ruta_img'=>BASE_URL.'views/layout/'.DEFAULT_LAYOUT.'/img/',
             'menu'=>$menu,
+            'menu_right' => $menuRight,
             'item'=>$item,
-            'js' => $js,
+            'js' => $this->_js,
+            'js_plugin' => $this->_jsPlugin,
             'root' => BASE_URL,
-            'config'=>array(
+            'configs'=>array(
                 'app_name'=>APP_NAME,
                 'app_slogan' => APP_SLOGAN,
                 'app_company' => APP_COMPANY
-                
             )
         );
                
@@ -107,13 +143,18 @@ class View extends Smarty
         $rutaView = $this->_rutas['view'] . $vista . '.tpl';
         if(is_readable($rutaView))
         {
+            if($noLayout){
+                $this->template_dir = $this->_rutas['view'];
+                $this->display($this->_rutas['view'] . $vista . '.tpl');
+                exit;
+            }
             /*llamos a smarty con el metodo assign */
             // _contenido llama para que se carge el template
             $this->assign('_contenido',$rutaView);
         }
         else
         {
-            throw new Exception("Error de Vista :(");			
+            throw new Exception("Error de Vista :( ". $rutaView);			
         } 
         $this->assign('_acl', $this->_acl);
         $this->assign('_layoutParams',$_Params);
@@ -134,6 +175,18 @@ class View extends Smarty
         }
     }
     
+    
+    public function setJsPlugin(array $js)
+    {
+        if(is_array($js) && count($js)){
+            for($i=0; $i < count($js); $i++){
+                $this->_jsPlugin[] = BASE_URL . 'public/js/' .  $js[$i] . '.js';
+            }
+        } 
+        else {
+            throw new Exception('Error de js plugin');
+        }
+    }    
 }
 
 ?>

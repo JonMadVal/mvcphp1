@@ -26,6 +26,6 @@
         <input type="password" name="confirmar" />
     </p>    
     <p>
-        <input type="submit" value="Registrar" class="button" />
+        <button type="submit" class="btn btn-primary">Enviar</button>
     </p>
 </form>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2014-04-20 23:58:32
+<?php /* Smarty version Smarty-3.1.8, created on 2014-06-15 09:22:26
          compiled from "C:\wamp\www\mvcphp1\modules\usuarios\views\index\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:92555354a3922302d5-77787799%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd048c072c66cba6694db20e2e70ebc8920cca15a' => 
     array (
       0 => 'C:\\wamp\\www\\mvcphp1\\modules\\usuarios\\views\\index\\index.tpl',
-      1 => 1398056299,
+      1 => 1402842142,
       2 => 'file',
     ),
   ),
@@ -27,7 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5354a392455839_45047021')) {function content_5354a392455839_45047021($_smarty_tpl) {?><h2>Usuarios</h2>
 <?php if (isset($_smarty_tpl->tpl_vars['usuarios']->value)&&count($_smarty_tpl->tpl_vars['usuarios']->value)){?>
-    <table>
+    <table class="table table-bordered table-striped table-condensed">
         <tr><td>ID</td>
             <td>Usuario</td>
             <td>Role</td>

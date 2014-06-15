@@ -70,7 +70,7 @@ class postModel extends Model
                         ));
     }
 	
-	public function getPrueba()
+    public function getPrueba()
     {
         $post = $this->_db->query("select * from prueba");
         return $post->fetchAll();

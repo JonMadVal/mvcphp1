@@ -43,7 +43,7 @@ class postController extends Controller
         //$this->_view->prueba =  $this->getInt('guardar');
         $this->_view->assign('titulo', 'Nuevo Post');        
         //$this->_view->titulo = 'Nuevo Post';
-        
+        $this->_view->setJsPlugin(array('jquery.validate'));
         $this->_view->setJs(array('nuevo'));
         if($this->getInt('guardar') ==1){
             $this->_view->datos = $_POST;
@@ -156,6 +156,7 @@ class postController extends Controller
 
     public function eliminar($id)
     {
+        $this->_acl->acceso('eliminar_post');
         if(!$this->filtrarInt($id)){
             $this->redireccionar('post');
         }
@@ -169,37 +170,36 @@ class postController extends Controller
     }
     
     // Prueba
-    	public function prueba($pagina = false)
-	{
-		/*
-                 Inserccion de Datos para Validad la Paginacion
-		for($i = 0; $i < 300; $i++){
-			$model = $this->loadModel('post');
-			$model->insertarPrueba('nombre ' . $i);
-		}
-		*/
-		if(!$this->filtrarInt($pagina)){
-			$pagina = false;
-		}
-		else{
-			$pagina = (int) $pagina;
-		}
-		
-    	$this->getLibrary('paginador');
-		$paginador = new Paginador();
-		
-        //$this->_view->posts = $paginador->paginar($this->_post->getPrueba(), $pagina);
-        //$this->_view->paginacion = $paginador->getView('prueba', 'post/prueba');
-        //$this->_view->titulo = 'Post';
-        $this->_view->assign('posts', $paginador->paginar($this->_post->getPrueba(), $pagina));
-	$this->_view->assign('paginacion', $paginador->getView('prueba', 'post/prueba'));
+    public function prueba($pagina = false)
+    {
+        /*
+         Inserccion de Datos para Validad la Paginacion
+        for($i = 0; $i < 300; $i++){
+                $model = $this->loadModel('post');
+                $model->insertarPrueba('nombre ' . $i);
+        }*/
+        $this->getLibrary('paginador');
+        $paginador = new Paginador();
+        $this->_view->setJs(array('prueba'));      
+        //$this->_view->assign('posts', $paginador->paginar($this->_post->getPrueba() , $pagina ));
+        $this->_view->assign('posts', $paginador->paginar($this->_post->getPrueba() ));
+        $this->_view->assign('paginacion', $paginador->getView('paginacion_ajax' ));
+        //$this->_view->assign('paginacion', $paginador->getView('prueba', 'post/prueba'));
         $this->_view->assign('titulo', 'Post');        
-        
-        
-        $this->_view->renderizar('prueba', 'post');
-	}
+        $this->_view->renderizar('prueba', 'prueba');
+    }
     
-    
+   public function pruebaAjax()
+   {
+       // Creando paginacion con el metodo Ajax
+       $pagina = $this->getInt('pagina');
+        $this->getLibrary('paginador');
+        $paginador = new Paginador();
+        $this->_view->setJs(array('prueba'));
+        $this->_view->assign('posts', $paginador->paginar($this->_post->getPrueba(), $pagina));
+        $this->_view->assign('paginacion', $paginador->getView('paginacion_ajax'));
+        $this->_view->renderizar('ajax/prueba', false, true);
+   }  
     
 }
 
