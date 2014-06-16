@@ -5,6 +5,7 @@ class Request
     private $_controlador;
     private $_metodo;
     private $_argumentos;
+    // uso de aplicaciones modulares $_modules , $_modulo
     private $_modules;
     private $_modulo;
 
@@ -15,18 +16,19 @@ class Request
             $url = array_filter($url);
             
             /* modulos de la app */
-            $this->_modules = array('usuarios');
+            // Uso de aplicaciones modulos
+            $this->_modules = array('usuarios'); // indicamos que modulos se manerajan
             $this->_modulo = strtolower(array_shift($url));
-            /*
-             1. modulo/controlador/metodo/argumentos
-             2. controlador/metodo/argumentos
+            /* estas son las url que se quiere manejar
+             1  modulo/controlador/metodo/argumentos 
+             2  controlador/metodo/argumentos 
              */
             if(!$this->_modulo){
                 $this->_modulo = false;
             }
             else{
-                if(count($this->_modules)){
-                    if(!in_array($this->_modulo, $this->_modules)){
+                if(count($this->_modules)){ // el modulo existe en el arreglo
+                    if(!in_array($this->_modulo, $this->_modules)){ //si no esta contenido dentro de modules
                         $this->_controlador = $this->_modulo;
                         $this->_modulo = false;
                     }
@@ -59,6 +61,7 @@ class Request
         }
     }
 
+    // añadimos esta funcion para leer los Modulos creados
     public function getModulo()
     {
         return $this->_modulo;

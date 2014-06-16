@@ -4,10 +4,10 @@ require_once ROOT . 'libs' . DS . 'smarty' . DS . 'libs' . DS . 'Smarty.class.ph
 
 class View extends Smarty
 {
-    private $_request;
+    private $_request; // para modulos
     private $_js;
     private $_acl;
-    private $_rutas;
+    private $_rutas; // para modulos
     private $_jsPlugin;
     
     public function __construct(Request $peticion, ACL $_acl)
@@ -16,12 +16,12 @@ class View extends Smarty
         $this->_request = $peticion;
         $this->_js = array();
         $this->_acl = $_acl;
-        $this->_rutas = array();
+        $this->_rutas = array(); // para modulos
         $this->_jsPlugin = array(); //inicializamos con un contructor
         
-        $modulo = $this->_request->getModulo();
+        $modulo = $this->_request->getModulo(); 
         $controlador = $this->_request->getControlador();
-        
+        // verificamos si se trabaja base controles o modulos
         if($modulo){
             $this->_rutas['view'] = ROOT . 'modules' . DS . $modulo . DS . 'views' . DS . $controlador . DS;
             $this->_rutas['js'] = BASE_URL . 'modules/' . $modulo . '/views/' . $controlador . '/js/';

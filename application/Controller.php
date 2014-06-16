@@ -3,23 +3,23 @@ abstract class Controller
 {
     protected $_view;
     protected $_acl;
-    protected $_request;
+    protected $_request;// atriburo protegido para aplicaciones modulares
     
     public function __construct()
     {
         $this->_acl = new ACL();
-        $this->_request = new Request();
+        $this->_request = new Request();// generamos una instancia y se pasa a la vista
         $this->_view = new View(new Request, $this->_acl);        
         //$this->_view = new view(new Request);
     }
     
     abstract public function index ();
     
-    protected function loadModel($modelo)
+    protected function loadModel($modelo, $modulo = false)
     {
         $modelo = $modelo . 'Model';
         $rutaModelo = ROOT . 'models' . DS . $modelo . '.php';
-        
+        // validamos si trabajamos en base a un modelo o controlador
         if(!$modulo){
             $modulo = $this->_request->getModulo();
         }

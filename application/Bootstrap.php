@@ -3,14 +3,15 @@ class Bootstrap
 {
     public static function run(Request $peticion)
     {
-        $modulo = $peticion->getModulo();
+        $modulo = $peticion->getModulo(); // Añadimos el metod para los modulos
         $controller = $peticion->getControlador().'Controller';
         //$rutaControlador = ROOT.'controllers'.DS.$controller.'.php';
         //echo $rutaControlador ; exit;	
         $metodo = $peticion->getMetodo();
         $args = $peticion->getArgs();
 
-        if($modulo){
+        if($modulo){ // verificamos si se trabajo con un modulo
+            //buscar y hereda del Controlador Base para los controladores del modulo .
             $rutaModulo = ROOT . 'controllers' . DS . $modulo . 'Controller.php';
             
             if(is_readable($rutaModulo)){
@@ -24,8 +25,8 @@ class Bootstrap
         else{
             $rutaControlador = ROOT . 'controllers' . DS . $controller . '.php';
         }            
-        
-        //echo $rutaControlador; exit;
+        // Comprovando la ruta que de indica en el Navegador
+        //  echo $rutaControlador; exit;
             
         if(is_readable($rutaControlador))
         {
