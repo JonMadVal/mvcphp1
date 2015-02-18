@@ -17,7 +17,7 @@ define('DB_HOST', 'localhost');
 //define('DB_HOST', 'LAPTOP1\SQL2005');
 define('DB_USER', 'root');
 //define('DB_USER', 'sa');
-define('DB_PASS', 'guillermo');
+define('DB_PASS', 'developer');
 define('DB_NAME', 'mvcphp1');
 define('DB_CHAR', 'utf8');
 
